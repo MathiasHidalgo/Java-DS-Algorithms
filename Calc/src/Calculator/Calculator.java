@@ -127,12 +127,12 @@ public class Calculator extends Container {
             public void actionPerformed(ActionEvent e) {
 
                 if(textDisplay.getText().equals("")){
-                    textDisplay.setText("0.");
+                    textDisplay.setText("0."); // if in the field there is no number, add 0.
                 }else if (textDisplay.getText().contains(".")){
-                    btnPoint.setEnabled(false);
+                    btnPoint.setEnabled(false); // if in the field there is already there, then it's ok, put it in false
                 }else{
                     String btnPointText = textDisplay.getText() + btnPoint.getText();
-                    textDisplay.setText(btnPointText);
+                    textDisplay.setText(btnPointText); // if you have already a number, keep it and add a point and then the float number
                 }
                 btnPoint.setEnabled(true);
             }
@@ -149,9 +149,24 @@ public class Calculator extends Container {
         btnMinus.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                /*This total 1 store the number you just put*/
-                total1 = total1 - Double.parseDouble(textDisplay.getText());
-                textDisplay.setText(""); // and then the textDisplay field "output field" get empty
+                String button_text = btnMinus.getText();
+                getOperator(button_text);
+            }
+        });
+
+        btnDivide.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String button_text = btnDivide.getText();
+                getOperator(button_text);
+            }
+        });
+
+        btnMultiply.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String button_text = btnMultiply.getText();
+                getOperator(button_text);
             }
         });
 
